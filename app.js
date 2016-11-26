@@ -414,7 +414,13 @@ function receivedPostback(event) {
 
   // When a postback is called, we'll send a message back to the sender to 
   // let them know it was successful
-  sendTextMessage(senderID, "Postback called");
+
+  sendTextMessage(senderID, "Votre réservation vient d’être confirmée Emma. Voici le QR Code à présenter à l’hôtel !");
+
+  sendImageMessage(senderID);
+  setTimeout({
+      sendGifMessage(senderID);
+  }, 300);
 }
 
 /*
@@ -468,7 +474,7 @@ function sendImageMessage(recipientId) {
       attachment: {
         type: "image",
         payload: {
-          url: SERVER_URL + "/assets/rift.png"
+          url: SERVER_URL + "/assets/qrcode.png"
         }
       }
     }
@@ -490,7 +496,7 @@ function sendGifMessage(recipientId) {
       attachment: {
         type: "image",
         payload: {
-          url: SERVER_URL + "/assets/instagram_logo.gif"
+          url: SERVER_URL + "/assets/giphy.gif"
         }
       }
     }
