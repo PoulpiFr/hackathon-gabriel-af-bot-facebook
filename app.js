@@ -331,12 +331,16 @@ function receivedMessage(event) {
                   "Vol AF977 à destination de Paris-Charles de Gaulle. \n" +
                   "Départ initialement prévu à 22h50 et reporté à 14h30 demain.";
           sendTextMessage(senderID, msg);
-          msg = "Nous pouvons vous envoyer les informations à travers des publicités. Si vous êtes interéssée, veuillez cliquer sur ce bouton.";
-          sendTextMessage(senderID, msg);
-          sendButtonMessage(senderID, "Recevoir des informations sur mon vol via des encarts publicitaires");
-          msg = "Je vous propose également de loger gratuitement dans un hôtel. Voici une sélection d’hôtels. Lequel voudriez-vous ?";
-          sendTextMessage(senderID, msg);
-          sendGenericMessage(senderID);
+          setTimeout(function() {
+            msg = "Nous pouvons vous envoyer les informations à travers des publicités. Si vous êtes interéssée, veuillez cliquer sur ce bouton.";
+            sendButtonMessage(senderID, msg);
+            setTimeout(function() {
+              msg = "Je vous propose également de loger gratuitement dans un hôtel. Voici une sélection d’hôtels. Lequel voudriez-vous ?";
+              sendTextMessage(senderID, msg);
+              sendGenericMessage(senderID);
+            }, 300);
+          }, 300);
+          
           break;
 
           case 1:
@@ -583,7 +587,7 @@ function sendTextMessage(recipientId, messageText) {
  * Send a button message using the Send API.
  *
  */
-function sendButtonMessage(recipientId) {
+function sendButtonMessage(recipientId, msg) {
   var messageData = {
     recipient: {
       id: recipientId
@@ -593,19 +597,11 @@ function sendButtonMessage(recipientId) {
         type: "template",
         payload: {
           template_type: "button",
-          text: "This is test text",
+          text: msg,
           buttons:[{
             type: "web_url",
-            url: "https://www.oculus.com/en-us/rift/",
-            title: "Open Web URL"
-          }, {
-            type: "postback",
-            title: "Trigger Postback",
-            payload: "DEVELOPER_DEFINED_PAYLOAD"
-          }, {
-            type: "phone_number",
-            title: "Call Phone Number",
-            payload: "+16505551234"
+            url: "https://www.facebook.com/messages/gabrielairfrance",
+            title: "Je suis d'accord."
           }]
         }
       }
@@ -630,32 +626,47 @@ function sendGenericMessage(recipientId) {
         payload: {
           template_type: "generic",
           elements: [{
-            title: "rift",
-            subtitle: "Next-generation virtual reality",
+            title: "Nomad Suites Residence",
+            subtitle: "(***) - 30 min de l'aéroport",
             item_url: "https://www.oculus.com/en-us/rift/",               
-            image_url: SERVER_URL + "/assets/rift.png",
+            image_url: SERVER_URL + "/assets/nomad.jpg",
             buttons: [{
               type: "web_url",
               url: "https://www.oculus.com/en-us/rift/",
-              title: "Open Web URL"
+              title: "+ d'infos"
             }, {
               type: "postback",
-              title: "Call Postback",
-              payload: "Payload for first bubble",
+              title: "Choisir",
+              payload: "Nomad",
             }],
           }, {
-            title: "touch",
-            subtitle: "Your Hands, Now in VR",
+            title: "ONOMO Hotel",
+            subtitle: "(**) - 10 min de l'aéroport",
             item_url: "https://www.oculus.com/en-us/touch/",               
-            image_url: SERVER_URL + "/assets/touch.png",
+            image_url: SERVER_URL + "/assets/onomo.jpg",
             buttons: [{
               type: "web_url",
               url: "https://www.oculus.com/en-us/touch/",
-              title: "Open Web URL"
+              title: "+ d'infos"
             }, {
               type: "postback",
-              title: "Call Postback",
-              payload: "Payload for second bubble",
+              title: "Choisir",
+              payload: "Onomo",
+            }]
+          },
+          {
+            title: "Carlston Hotel",
+            subtitle: "(***) - 20 min de l'aéroport",
+            item_url: "https://www.oculus.com/en-us/touch/",               
+            image_url: SERVER_URL + "/assets/carlston.jpg",
+            buttons: [{
+              type: "web_url",
+              url: "https://www.oculus.com/en-us/touch/",
+              title: "+ d'infos"
+            }, {
+              type: "postback",
+              title: "Choisir",
+              payload: "Carlston",
             }]
           }]
         }
