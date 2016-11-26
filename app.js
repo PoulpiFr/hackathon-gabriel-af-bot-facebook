@@ -318,12 +318,28 @@ function receivedMessage(event) {
 
       default:
 
+        var msg;
+
         switch(global.msgSeq) {
 
           case 0:
-          var msg = "Bonjour Emma";
+          msg = "Bonjour Emma =)\n Laissez moi une seconde, je consulte votre dossier client ;-)";
           sendTextMessage(senderID, msg);
+          msg = "Voici les informations dont je dispose :\n" +
+                  "Dossier BBB222. \n" +
+                  "Tel : 06 17 63 29 18 / OK pour être appelé ? : Oui \n" +
+                  "Vol AF977 à destination de Paris-Charles de Gaulle. \n" +
+                  "Départ initialement prévu à 22h50 et reporté à 14h30 demain.";
+          sendTextMessage(senderID, msg);
+          msg = "Nous pouvons vous envoyer les informations à travers des publicités. <a href=\"http://www.google.com\">Si vous êtes interéssée, veuillez cliquer sur ce lien.</a>";
+          sendTextMessage(senderID, msg);
+          msg = "Je vous propose également de loger gratuitement dans un hôtel. Voici une sélection d’hôtels. Lequel voudriez-vous ?";
+          sendTextMessage(senderID, msg);
+          sendGenericMessage(senderID);
           break;
+
+          case 1:
+          msg = ""
 
           default:
           sendTextMessage(senderID, messageText);
