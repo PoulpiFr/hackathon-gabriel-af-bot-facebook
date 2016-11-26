@@ -330,7 +330,7 @@ function receivedMessage(event) {
                     "Dossier BBB222. \n" +
                     "Tel : 06 17 63 29 18 / OK pour être appelé ? : Oui \n" +
                     "Vol AF977 à destination de Paris-Charles de Gaulle. \n" +
-                    "Départ initialement prévu à 22h50 et reporté à 14h30 demain.";
+                    "Départ initialement prévu à 22h50 et reporté à 14h30 demain.\n";
             sendButtonMessageInfo(senderID, msg);
           }, 300);
           break;
@@ -347,15 +347,17 @@ function receivedMessage(event) {
 
 function choixHotel(senderID) {
 
-  msg = "Je vous propose également de loger gratuitement dans un hôtel. Voici une sélection d’hôtels. Lequel voudriez-vous ?";
+  var msg = "Je vous propose également de loger gratuitement dans un hôtel. Voici une sélection d’hôtels. Lequel voudriez-vous ?";
   sendTextMessage(senderID, msg);
   sendGenericMessage(senderID);
 
 }
 
 function choixPubs(senderID) {
-  msg = "Nous pouvons vous envoyer les informations à travers des publicités. Si vous êtes interéssée, veuillez cliquer sur ce bouton.";
+  
+  var msg = "Nous pouvons vous envoyer les informations à travers des publicités. Si vous êtes interéssée, veuillez cliquer sur ce bouton.";
   sendButtonMessagePubs(senderID, msg);
+
 }
 
 /* Hacky Hacky Hacky */
