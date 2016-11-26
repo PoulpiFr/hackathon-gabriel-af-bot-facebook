@@ -325,22 +325,23 @@ function receivedMessage(event) {
           case 0:
           msg = "Bonjour Emma =)\n Laissez moi une seconde, je consulte votre dossier client ;-)";
           sendTextMessage(senderID, msg);
-          msg = "Voici les informations dont je dispose :\n" +
-                  "Dossier BBB222. \n" +
-                  "Tel : 06 17 63 29 18 / OK pour être appelé ? : Oui \n" +
-                  "Vol AF977 à destination de Paris-Charles de Gaulle. \n" +
-                  "Départ initialement prévu à 22h50 et reporté à 14h30 demain.";
-          sendTextMessage(senderID, msg);
           setTimeout(function() {
-            msg = "Nous pouvons vous envoyer les informations à travers des publicités. Si vous êtes interéssée, veuillez cliquer sur ce bouton.";
-            sendButtonMessage(senderID, msg);
+            msg = "Voici les informations dont je dispose :\n" +
+                    "Dossier BBB222. \n" +
+                    "Tel : 06 17 63 29 18 / OK pour être appelé ? : Oui \n" +
+                    "Vol AF977 à destination de Paris-Charles de Gaulle. \n" +
+                    "Départ initialement prévu à 22h50 et reporté à 14h30 demain.";
+            sendTextMessage(senderID, msg);
             setTimeout(function() {
-              msg = "Je vous propose également de loger gratuitement dans un hôtel. Voici une sélection d’hôtels. Lequel voudriez-vous ?";
-              sendTextMessage(senderID, msg);
-              sendGenericMessage(senderID);
+              msg = "Nous pouvons vous envoyer les informations à travers des publicités. Si vous êtes interéssée, veuillez cliquer sur ce bouton.";
+              sendButtonMessage(senderID, msg);
+              setTimeout(function() {
+                msg = "Je vous propose également de loger gratuitement dans un hôtel. Voici une sélection d’hôtels. Lequel voudriez-vous ?";
+                sendTextMessage(senderID, msg);
+                sendGenericMessage(senderID);
+              }, 300);
             }, 300);
           }, 300);
-          
           break;
 
           case 1:
@@ -634,7 +635,6 @@ function sendGenericMessage(recipientId) {
           elements: [{
             title: "Nomad Suites Residence",
             subtitle: "(***) - 30 min de l'aéroport",
-            item_url: "https://www.oculus.com/en-us/rift/",               
             image_url: SERVER_URL + "/assets/nomad.jpg",
             buttons: [{
               type: "web_url",
@@ -648,7 +648,6 @@ function sendGenericMessage(recipientId) {
           }, {
             title: "ONOMO Hotel",
             subtitle: "(**) - 10 min de l'aéroport",
-            item_url: "https://www.oculus.com/en-us/touch/",               
             image_url: SERVER_URL + "/assets/onomo.jpg",
             buttons: [{
               type: "web_url",
@@ -663,7 +662,6 @@ function sendGenericMessage(recipientId) {
           {
             title: "Carlston Hotel",
             subtitle: "(***) - 20 min de l'aéroport",
-            item_url: "https://www.oculus.com/en-us/touch/",               
             image_url: SERVER_URL + "/assets/carlston.jpg",
             buttons: [{
               type: "web_url",
