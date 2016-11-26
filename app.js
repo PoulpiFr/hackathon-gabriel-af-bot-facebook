@@ -326,7 +326,7 @@ function receivedMessage(event) {
           break;
 
           default:
-          sendTextMessage(senderID, msg);
+          sendTextMessage(senderID, messageText);
           break;
 
         }
