@@ -331,10 +331,7 @@ function receivedMessage(event) {
                     "Tel : 06 17 63 29 18 / OK pour être appelé ? : Oui \n" +
                     "Vol AF977 à destination de Paris-Charles de Gaulle. \n" +
                     "Départ initialement prévu à 22h50 et reporté à 14h30 demain.";
-            sendTextMessage(senderID, msg);
-            setTimeout(function() {
-              sendButtonMessageInfo(senderID);
-            }, 300);
+            sendButtonMessageInfo(senderID, msg);
           }, 300);
           break;
 
@@ -638,7 +635,7 @@ function sendButtonMessage(recipientId, msg) {
   callSendAPI(messageData);
 }
 
-function sendButtonMessageInfo(recipientId) {
+function sendButtonMessageInfo(recipientId, msg) {
   var messageData = {
     recipient: {
       id: recipientId
@@ -648,6 +645,7 @@ function sendButtonMessageInfo(recipientId) {
         type: "template",
         payload: {
           template_type: "button",
+          text: msg,
           buttons:[{
             type: "postback",
             payload: "OK_INFOS",
