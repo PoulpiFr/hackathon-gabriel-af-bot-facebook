@@ -333,13 +333,7 @@ function receivedMessage(event) {
                     "Départ initialement prévu à 22h50 et reporté à 14h30 demain.";
             sendTextMessage(senderID, msg);
             setTimeout(function() {
-              msg = "Nous pouvons vous envoyer les informations à travers des publicités. Si vous êtes interéssée, veuillez cliquer sur ce bouton.";
-              sendButtonMessage(senderID, msg);
-              setTimeout(function() {
-                msg = "Je vous propose également de loger gratuitement dans un hôtel. Voici une sélection d’hôtels. Lequel voudriez-vous ?";
-                sendTextMessage(senderID, msg);
-                sendGenericMessage(senderID);
-              }, 300);
+              sendButtonMessageInfo(senderID);
             }, 300);
           }, 300);
           break;
@@ -352,6 +346,19 @@ function receivedMessage(event) {
   } else if (messageAttachments) {
     sendTextMessage(senderID, "Message with attachment received");
   }
+}
+
+function choixHotel(senderID) {
+
+  msg = "Je vous propose également de loger gratuitement dans un hôtel. Voici une sélection d’hôtels. Lequel voudriez-vous ?";
+  sendTextMessage(senderID, msg);
+  sendGenericMessage(senderID);
+
+}
+
+function choixPubs(senderID) {
+  msg = "Nous pouvons vous envoyer les informations à travers des publicités. Si vous êtes interéssée, veuillez cliquer sur ce bouton.";
+  sendButtonMessage(senderID, msg);
 }
 
 /* Hacky Hacky Hacky */
@@ -408,6 +415,26 @@ function receivedPostback(event) {
 
   // When a postback is called, we'll send a message back to the sender to 
   // let them know it was successful
+
+  switch (payload) {
+
+    case 'OK_PUB':
+    choixHotel(senderID);
+    break;
+
+    case 'KO_PUB':
+    choixHotel(senderID);
+    break;
+
+    case 'OK_INFOS':
+    choixPubs(senderID);
+    break;
+
+    case 'KO_INFOS':
+    choixPubs(senderID);
+    break;
+
+  }
 
   sendTextMessage(senderID, "Votre réservation vient d’être confirmée Emma. Voici le QR Code à présenter à l’hôtel !");
 
@@ -602,6 +629,35 @@ function sendButtonMessage(recipientId, msg) {
             type: "web_url",
             url: "https://www.facebook.com/messages/gabrielairfrance",
             title: "Je suis d'accord."
+          }]
+        }
+      }
+    }
+  };  
+
+  callSendAPI(messageData);
+}
+
+function sendButtonMessageInfo(recipientId, msg) {
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+      attachment: {
+        type: "template",
+        payload: {
+          template_type: "button",
+          text: msg,
+          buttons:[{
+            type: "postback",
+            payload: "OK_PUB",
+            title: "Je suis d'accord."
+          },
+          {
+            type: "postback",
+            payload: "KO_PUB",
+            title: "Je refuse."
           }]
         }
       }
