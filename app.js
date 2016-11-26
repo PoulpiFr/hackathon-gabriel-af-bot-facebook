@@ -329,7 +329,7 @@ function receivedMessage(event) {
             msg = "Voici les informations dont je dispose :\n" +
                     "Dossier BBB222. \n" +
                     "Tel : 06 17 63 29 18 / OK pour être appelé ? : Oui \n" +
-                    "Vol AF977 à destination de Paris-Charles de Gaulle. \n" +
+                    "Vol AF977 / Départ : CDG / Destination : Libreville \n" +
                     "Départ initialement prévu à 22h50 et reporté à 14h30 demain.\n";
             sendButtonMessageInfo(senderID, msg);
           }, 300);
@@ -725,9 +725,9 @@ function sendGenericMessage(recipientId) {
         payload: {
           template_type: "generic",
           elements: [{
-            title: "Nomad Suites Residence",
-            subtitle: "(***) - 30 min de l'aéroport",
-            image_url: SERVER_URL + "/assets/nomad.jpg",
+            title: "Kyriad Roissy Villepinte",
+            subtitle: "(**) - 10 min de l'aéroport",
+            image_url: SERVER_URL + "/assets/kyriad.jpg",
             buttons: [{
               type: "web_url",
               url: "https://www.oculus.com/en-us/rift/",
@@ -738,9 +738,9 @@ function sendGenericMessage(recipientId) {
               payload: "Nomad",
             }],
           }, {
-            title: "ONOMO Hotel",
-            subtitle: "(**) - 10 min de l'aéroport",
-            image_url: SERVER_URL + "/assets/onomo.jpg",
+            title: "Kyriad Gare Du Nord",
+            subtitle: "(**) - 40 min de l'aéroport",
+            image_url: SERVER_URL + "/assets/kyriad_nord.jpg",
             buttons: [{
               type: "web_url",
               url: "https://www.oculus.com/en-us/touch/",
@@ -752,9 +752,9 @@ function sendGenericMessage(recipientId) {
             }]
           },
           {
-            title: "Carlston Hotel",
-            subtitle: "(***) - 20 min de l'aéroport",
-            image_url: SERVER_URL + "/assets/carlston.jpg",
+            title: "Hotel du Chemin Vert Paris",
+            subtitle: "(***) - 50 min de l'aéroport",
+            image_url: SERVER_URL + "/assets/vert.jpg",
             buttons: [{
               type: "web_url",
               url: "https://www.oculus.com/en-us/touch/",
