@@ -339,8 +339,11 @@ function receivedMessage(event) {
   }
 }
 
+/* Hacky Hacky Hacky */
+
 app.get('/reset', function(req, res) {
   global.msgSeq = 0;
+  res.sendStatus(200);
 });
 
 /*
