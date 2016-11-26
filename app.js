@@ -418,7 +418,7 @@ function receivedPostback(event) {
   sendTextMessage(senderID, "Votre réservation vient d’être confirmée Emma. Voici le QR Code à présenter à l’hôtel !");
 
   sendImageMessage(senderID);
-  setTimeout({
+  setTimeout(function () {
       sendGifMessage(senderID);
   }, 300);
 }
