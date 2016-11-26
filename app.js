@@ -322,7 +322,7 @@ function receivedMessage(event) {
 
         switch(global.msgSeq) {
 
-          case 0:
+          default:
           msg = "Bonjour Emma =)\n Laissez moi une seconde, je consulte votre dossier client ;-)";
           sendTextMessage(senderID, msg);
           setTimeout(function() {
@@ -344,12 +344,6 @@ function receivedMessage(event) {
           }, 300);
           break;
 
-          case 1:
-          msg = ""
-
-          default:
-          sendTextMessage(senderID, messageText);
-          break;
 
         }
 
