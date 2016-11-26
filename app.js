@@ -331,8 +331,9 @@ function receivedMessage(event) {
                   "Vol AF977 à destination de Paris-Charles de Gaulle. \n" +
                   "Départ initialement prévu à 22h50 et reporté à 14h30 demain.";
           sendTextMessage(senderID, msg);
-          msg = "Nous pouvons vous envoyer les informations à travers des publicités. <a href=\"http://www.google.com\">Si vous êtes interéssée, veuillez cliquer sur ce lien.</a>";
+          msg = "Nous pouvons vous envoyer les informations à travers des publicités. Si vous êtes interéssée, veuillez cliquer sur ce bouton.";
           sendTextMessage(senderID, msg);
+          sendButtonMessage(senderID, "Recevoir des informations sur mon vol via des encarts publicitaires");
           msg = "Je vous propose également de loger gratuitement dans un hôtel. Voici une sélection d’hôtels. Lequel voudriez-vous ?";
           sendTextMessage(senderID, msg);
           sendGenericMessage(senderID);
