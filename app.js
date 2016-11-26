@@ -10,6 +10,8 @@
 /* jshint node: true, devel: true */
 'use strict';
 
+
+
 const 
   bodyParser = require('body-parser'),
   config = require('config'),
@@ -55,6 +57,11 @@ if (!(APP_SECRET && VALIDATION_TOKEN && PAGE_ACCESS_TOKEN && SERVER_URL)) {
   console.error("Missing config values");
   process.exit(1);
 }
+
+/* This is a hack */
+/* I'm not proud */
+
+global.msgSeq = 0;
 
 /*
  * Use your own validation token. Check that the token used in the Webhook 
@@ -215,6 +222,8 @@ function receivedAuthentication(event) {
  * then we'll simply confirm that we've received the attachment.
  * 
  */
+
+
 function receivedMessage(event) {
   var senderID = event.sender.id;
   var recipientID = event.recipient.id;
@@ -308,13 +317,31 @@ function receivedMessage(event) {
         break;
 
       default:
-        sendTextMessage(senderID, messageText);
+
+        switch(global.msgSeq) {
+
+          case 0:
+          var msg = "Bonjour Emma";
+          sendTextMessage(senderID, msg);
+          break;
+
+          default:
+          sendTextMessage(senderID, msg);
+          break;
+
+        }
+
+        global.msgSeq = global.msgSeq + 1;
+        
     }
   } else if (messageAttachments) {
     sendTextMessage(senderID, "Message with attachment received");
   }
 }
 
+app.get('/reset', function(req, res) {
+  global.msgSeq = 0;
+});
 
 /*
  * Delivery Confirmation Event
