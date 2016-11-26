@@ -358,7 +358,7 @@ function choixHotel(senderID) {
 
 function choixPubs(senderID) {
   msg = "Nous pouvons vous envoyer les informations à travers des publicités. Si vous êtes interéssée, veuillez cliquer sur ce bouton.";
-  sendButtonMessage(senderID, msg);
+  sendButtonMessagePubs(senderID, msg);
 }
 
 /* Hacky Hacky Hacky */
@@ -638,7 +638,35 @@ function sendButtonMessage(recipientId, msg) {
   callSendAPI(messageData);
 }
 
-function sendButtonMessageInfo(recipientId, msg) {
+function sendButtonMessageInfo(recipientId) {
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+      attachment: {
+        type: "template",
+        payload: {
+          template_type: "button",
+          buttons:[{
+            type: "postback",
+            payload: "OK_INFOS",
+            title: "C'est correct."
+          },
+          {
+            type: "postback",
+            payload: "KO_INFOS",
+            title: "Editer mes informations"
+          }]
+        }
+      }
+    }
+  };  
+
+  callSendAPI(messageData);
+}
+
+function sendButtonMessagePubs(recipientId, msg) {
   var messageData = {
     recipient: {
       id: recipientId
