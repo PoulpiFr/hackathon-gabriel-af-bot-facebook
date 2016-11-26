@@ -648,6 +648,7 @@ function sendButtonMessageInfo(recipientId) {
         type: "template",
         payload: {
           template_type: "button",
+          msg: "LOL",
           buttons:[{
             type: "postback",
             payload: "OK_INFOS",
