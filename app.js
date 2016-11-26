@@ -344,7 +344,6 @@ function receivedMessage(event) {
           }, 300);
           break;
 
-
         }
 
         global.msgSeq = global.msgSeq + 1;
