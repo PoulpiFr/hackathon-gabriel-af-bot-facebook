@@ -433,8 +433,23 @@ function receivedPostback(event) {
     choixPubs(senderID);
     break;
 
+    case 'Onomo':
+    confirmationHotel(senderID);
+    break;
+
+    case 'Carlston':
+    confirmationHotel(senderID);
+    break;
+
+    case 'Nomad':
+    confirmationHotel(senderID);
+    break;
+
   }
 
+}
+
+function confirmationHotel(senderID) {
   sendTextMessage(senderID, "Votre réservation vient d’être confirmée Emma. Voici le QR Code à présenter à l’hôtel !");
 
   sendImageMessage(senderID);
