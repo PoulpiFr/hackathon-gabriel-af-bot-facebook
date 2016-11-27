@@ -355,7 +355,7 @@ function choixHotel(senderID) {
 
 function choixPubs(senderID) {
   
-  var msg = "Nous pouvons vous envoyer les informations à travers des publicités. Si vous êtes interéssée, veuillez cliquer sur ce bouton.";
+  var msg = "Nous pouvons remplacer toutes vos publicités par des informations relatives à votre vol. Si vous êtes interéssée, veuillez cliquer sur ce bouton !";
   sendButtonMessagePubs(senderID, msg);
 
 }
