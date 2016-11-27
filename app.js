@@ -323,7 +323,7 @@ function receivedMessage(event) {
         switch(global.msgSeq) {
 
           default:
-          msg = "Bonjour Emma =)\n Laissez moi une seconde, je consulte votre dossier client ;-)";
+          msg = "Bonjour Pierre =)\n Laissez moi une seconde, je consulte votre dossier client ;-)";
           sendTextMessage(senderID, msg);
           setTimeout(function() {
             msg = "Voici les informations dont je dispose :\n" +
@@ -450,7 +450,7 @@ function receivedPostback(event) {
 }
 
 function confirmationHotel(senderID) {
-  sendTextMessage(senderID, "Votre réservation vient d’être confirmée Emma. Voici le QR Code à présenter à l’hôtel !");
+  sendTextMessage(senderID, "Votre réservation vient d’être confirmée Pierre. Voici le QR Code à présenter à l’hôtel !");
 
   sendImageMessage(senderID);
   setTimeout(function () {
